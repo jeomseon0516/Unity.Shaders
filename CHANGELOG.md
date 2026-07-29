@@ -1,5 +1,9 @@
 # 변경 기록
 
+## [0.1.1] - 2026-07-29
+
+- 패키지 Shader 검색을 확인하는 `Basic Usage` 샘플을 추가했습니다.
+
 ## [Unreleased]
 
 - TODO(api): UI Gradient Mask가 Shader Graph 또는 UI Toolkit 마스킹으로 대체 가능한지 렌더 파이프라인별로 검증합니다.
