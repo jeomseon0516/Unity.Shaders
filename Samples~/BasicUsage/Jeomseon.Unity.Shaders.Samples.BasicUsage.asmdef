@@ -1,3 +1,4 @@
 {
-  "name": "Jeomseon.Unity.Shaders.Samples.BasicUsage"
+  "name": "Jeomseon.Unity.Shaders.Samples.BasicUsage",
+  "rootNamespace": "Jeomseon.Samples.Shaders"
 }
