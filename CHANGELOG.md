@@ -8,7 +8,7 @@
 
 - 패키지 Shader 검색을 확인하는 `Basic Usage` 샘플을 추가했습니다.
 
-## [Unreleased]
+## [0.1.4] - 2026-08-18
 
 - **(P2-02)** `Basic Usage` 샘플에 `ShadersBasicUsageSample.unity`를 추가했습니다.
   `UI/RoundedEdgeWithFade_Masked`의 프로퍼티 조합 4가지(Rounded Panel/Rounded Outline/Radial

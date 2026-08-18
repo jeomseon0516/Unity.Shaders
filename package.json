@@ -1,6 +1,6 @@
 {
   "name": "com.jeomseon.unity.shaders",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "displayName": "Jeomseon Unity Shaders",
   "description": "Reusable shaders for Jeomseon Unity UI packages.",
   "unity": "6000.5",
