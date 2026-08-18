@@ -72,10 +72,11 @@ Shader "UI/RoundedEdgeWithFade_Masked"
             #pragma fragment frag
 
             // 페이드 모드 키워드
-            #pragma multi_compile _FADEMODE_NONE _FADEMODE_RADIAL _FADEMODE_LINEAR
+            #pragma shader_feature_local _FADEMODE_NONE _FADEMODE_RADIAL _FADEMODE_LINEAR
 
-            // RectMask2D / Mask 공통 UI 키워드
-            #pragma multi_compile __ UNITY_UI_CLIP_RECT UNITY_UI_ALPHACLIP
+            // RectMask2D와 alpha clip은 동시에 활성화될 수 있으므로 독립 variant로 생성
+            #pragma multi_compile_local _ UNITY_UI_CLIP_RECT
+            #pragma multi_compile_local _ UNITY_UI_ALPHACLIP
 
             #include "UnityCG.cginc"
             #include "UnityUI.cginc"

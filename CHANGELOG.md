@@ -1,5 +1,17 @@
 # 변경 기록
 
+## [Unreleased]
+
+- **(P0-01)** `UI/RoundedEdgeWithFade_Masked`에서 `UNITY_UI_CLIP_RECT`와 `UNITY_UI_ALPHACLIP`을
+  하나의 `multi_compile`에 상호 배타적으로 선언해 두 기능을 동시에 쓰는 variant가 생성되지 않던
+  결함을 수정했습니다. 두 키워드는 독립 `multi_compile_local`, Fade mode는 `shader_feature_local`로
+  선언합니다.
+- shader 존재·지원 여부, compiler error, uGUI 필수 프로퍼티를 검사하는 `Tests/Editor` Editor 테스트
+  어셈블리(`RoundedEdgeWithFadeShaderTests`)를 추가했습니다.
+- Built-in TestProject와 별도 URP 검증 프로젝트(`Unity.URPTestProject`) 양쪽에서 위 Editor 테스트
+  전체 통과 및 `ShadersBasicUsageSample` 렌더링을 사용자가 확인해 P0-01(렌더 파이프라인 호환성
+  검증)을 완료했습니다.
+
 ## [0.1.2] - 2026-07-29
 
 - Samples 어셈블리의 `rootNamespace`를 샘플 namespace에 맞게 정리했습니다.
