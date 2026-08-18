@@ -10,7 +10,7 @@
    - 각 shader의 사용 목적, 입력 프로퍼티, 렌더 큐와 지원 파이프라인을 문서화합니다.
 3. **P2-01 — UI Gradient Mask 대체 가능성**
    - Shader Graph와 UI Toolkit 또는 uGUI 마스킹으로 대체 가능한지 비교합니다.
-4. **P2-02 — 샘플과 시각 회귀 테스트 (진행 중, 2026-08-17, Unity 검증 대기)**
+4. **P2-02 — 샘플과 시각 회귀 테스트 (완료, 2026-08-17, 2026-08-18 사용자 Unity 검증 완료)**
    - 대표 material과 scene/sample을 제공하고 주요 플랫폼의 결과를 확인합니다.
    - 기존 `Basic Usage` 샘플은 `Shader.Find` 조회만 확인하는 스크립트뿐이라 실제 렌더링 결과를
      눈으로 볼 수 없었습니다. `UI/RoundedEdgeWithFade_Masked`의 프로퍼티 조합 4가지(Rounded Panel,
@@ -25,8 +25,9 @@
      `Materials/*.mat` 4개와 `ShadersBasicUsageSample.unity`(각 `.meta` 포함)를 직접 작성해
      커밋했습니다 — Import 즉시 Scene을 열면 바로 확인할 수 있습니다. 기존 `ShaderLookupSample`도
      Scene에 `Shader Lookup Debug` GameObject로 포함했습니다(GUID를 고정한 `.meta`를 새로 커밋).
-   - **아직 실제 Unity에서 열어 렌더링 결과를 시각 확인하지 못했습니다.** 손으로 작성한 Material/
-     Scene YAML이 Unity 6000.5.7f1에서 정확히 로드되는지(Missing Material/Script 없이, 4개
-     Panel이 의도한 모양으로 렌더링되는지) 다음 세션(또는 사용자)이 확인해야 합니다.
+   - **사용자 Unity 검증 완료(2026-08-18)**: Unity 6000.5.7f1에서 `ShadersBasicUsageSample.unity`를
+     열어 확인한 결과, 손으로 작성한 Material/Scene YAML이 정확히 로드되고 4개 Panel(Rounded Panel/
+     Rounded Outline/Radial Fade/Linear Fade)이 Missing Material/Script 없이 의도한 대로
+     렌더링되는 것을 확인했습니다.
 5. **P3-01 — 파이프라인별 하위 패키지**
    - 파이프라인 전용 shader가 늘어날 때만 URP 등 별도 패키지 분리를 검토합니다.
