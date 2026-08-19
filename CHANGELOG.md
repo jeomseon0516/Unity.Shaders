@@ -1,6 +1,6 @@
 # 변경 기록
 
-## [Unreleased]
+## [0.1.5] - 2026-08-19
 
 - **(P0-01)** `UI/RoundedEdgeWithFade_Masked`에서 `UNITY_UI_CLIP_RECT`와 `UNITY_UI_ALPHACLIP`을
   하나의 `multi_compile`에 상호 배타적으로 선언해 두 기능을 동시에 쓰는 variant가 생성되지 않던
