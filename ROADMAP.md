@@ -1,5 +1,11 @@
 # Shaders 로드맵
 
+## 0.1.6 안정화
+
+- [x] 단일 육각형 도형과 육각 Grid 좌표 계산을 독립 HLSL 계층으로 분리
+- [x] 고수준 Grid Shader가 `HexagonShapeCore.hlsl`을 재사용하도록 구성
+- [ ] Built-in/URP Scene에서 `Hexagon Outline`과 `Hex Grid Surface` 육안 검증
+
 우선순위: `P0` 결함·안전성 → `P1` 핵심 구조 → `P2` API·성능 → `P3` 장기 확장
 
 ## 작업 순서

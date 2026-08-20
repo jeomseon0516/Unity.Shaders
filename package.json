@@ -1,8 +1,8 @@
 {
   "name": "com.jeomseon.unity.shaders",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "displayName": "Jeomseon Unity Shaders",
-  "description": "Reusable shaders for Jeomseon Unity UI packages.",
+  "description": "Reusable UI and grid shader assets for Unity projects.",
   "unity": "6000.5",
   "unityRelease": "7f1",
   "dependencies": {

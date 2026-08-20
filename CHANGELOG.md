@@ -1,5 +1,13 @@
 # 변경 기록
 
+## [0.1.6] - 2026-08-20
+
+- 단일 육각형 도형을 그리는 `HexagonShapeCore.hlsl`과 `Hexagon Outline` Shader를 추가했습니다.
+- 육각형 중심 좌표 계산과 도형 렌더링을 분리한 `HexGridCore.hlsl` 및 `Hex Grid Surface` Shader를 추가했습니다.
+- Grid 경계는 픽셀이 아니라 육각형 중심으로 판정합니다. 경계 밖 픽셀도 인접한 내부 타일의 단일
+  도형 외곽선에 속하면 유지해 가장 바깥쪽 도형의 선 굵기와 안티앨리어싱이 잘리지 않게 했습니다.
+- 기존 GridTileSystem의 Lit 확장 Shader Graph를 Shaders 패키지로 이동했습니다.
+
 ## [0.1.5] - 2026-08-19
 
 - **(P0-01)** `UI/RoundedEdgeWithFade_Masked`에서 `UNITY_UI_CLIP_RECT`와 `UNITY_UI_ALPHACLIP`을
