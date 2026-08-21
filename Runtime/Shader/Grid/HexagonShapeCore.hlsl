@@ -1,11 +1,11 @@
 #ifndef JEOMSEON_HEXAGON_SHAPE_CORE_INCLUDED
 #define JEOMSEON_HEXAGON_SHAPE_CORE_INCLUDED
 
-float JeomseonDistanceToHexagonSegment(float2 point, float2 start, float2 end)
+float JeomseonDistanceToHexagonSegment(float2 samplePoint, float2 start, float2 end)
 {
     float2 segment = end - start;
     float denominator = max(dot(segment, segment), 0.000001);
-    return length(point - (start + saturate(dot(point - start, segment) / denominator) * segment));
+    return length(samplePoint - (start + saturate(dot(samplePoint - start, segment) / denominator) * segment));
 }
 
 float JeomseonHexagonOutlineAlpha(float2 position, float radius, float lineWidth)
