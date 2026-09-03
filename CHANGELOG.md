@@ -1,6 +1,6 @@
 # 변경 기록
 
-## [Unreleased]
+## [0.2.0] - 2026-09-03
 
 - **(Breaking, 렌더 파이프라인)** 워크스페이스 기준을 Unity `6000.6` + URP `17.6`으로 전환하면서
   `Jeomseon/Grid/Hex Grid Surface`와 `Jeomseon/Shape/Hexagon Outline` 셰이더를 URP 전용으로

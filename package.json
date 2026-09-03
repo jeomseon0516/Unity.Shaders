@@ -1,6 +1,6 @@
 {
   "name": "com.jeomseon.unity.shaders",
-  "version": "0.1.6",
+  "version": ".0.2.0.",
   "displayName": "Jeomseon Unity Shaders",
   "description": "Reusable uGUI and URP grid shader assets for Unity 6000.6 projects.",
   "unity": "6000.6",
