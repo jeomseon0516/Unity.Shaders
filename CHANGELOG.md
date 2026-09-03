@@ -9,6 +9,10 @@
   - `UnityObjectToClipPos` → `TransformObjectToHClip`
   - SubShader에 `"RenderPipeline"="UniversalPipeline"`, Pass에 `"LightMode"="UniversalForward"` 태그
   - 머티리얼 프로퍼티를 `CBUFFER_START(UnityPerMaterial)` 블록으로 묶어 SRP Batcher와 호환
+  - `Hex Grid Surface`의 `_GridRadius`를 `Int` → `Float`로 바꿨습니다. SRP Batcher는
+    `UnityPerMaterial`에 `int` 멤버를 허용하지 않아 legacy per-material 경로로 강등되므로,
+    `float`로 저장하고 셰이더 내부에서 `(int)`로 캐스팅합니다(값 3 기본, 정수 연산 동일). 이
+    프로퍼티를 참조하는 머티리얼은 없어 재직렬화 영향 없음.
   - 순수 수학 계층인 `HexGridCore.hlsl`/`HexagonShapeCore.hlsl`은 Unity include가 없어 변경 없음
 - `com.unity.render-pipelines.universal` `17.6.0` 의존성을 추가하고 `com.unity.ugui` 최소 버전을
   `2.6.0`으로 올렸습니다.

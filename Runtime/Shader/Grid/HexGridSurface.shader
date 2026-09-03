@@ -4,7 +4,7 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
     {
         _GridColor("Grid Color", Color) = (0, 1, 1, 1)
         _TileRadius("Tile Radius", Float) = 0.5
-        _GridRadius("Grid Radius", Int) = 3
+        _GridRadius("Grid Radius", Float) = 3
         _LineWidth("Line Width", Float) = 0.03
         _CoordinateScale("Coordinate Scale", Vector) = (10, 10, 0, 0)
     }
@@ -33,7 +33,8 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
             CBUFFER_START(UnityPerMaterial)
                 float4 _GridColor;
                 float _TileRadius;
-                int _GridRadius;
+                // Stored as float: the SRP Batcher rejects int members in UnityPerMaterial.
+                float _GridRadius;
                 float _LineWidth;
                 float4 _CoordinateScale;
             CBUFFER_END
@@ -56,7 +57,7 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
                 clip(JeomseonTryGetVisibleHexCell(
                     input.coordinate,
                     _TileRadius,
-                    _GridRadius,
+                    (int)_GridRadius,
                     _LineWidth,
                     cell,
                     alpha) ? 1.0 : -1.0);
