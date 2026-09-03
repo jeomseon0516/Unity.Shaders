@@ -11,9 +11,13 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
 
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        Tags { "RenderPipeline"="UniversalPipeline" "Queue"="Transparent" "RenderType"="Transparent" }
+
         Pass
         {
+            Name "Forward"
+            Tags { "LightMode"="UniversalForward" }
+
             Blend SrcAlpha OneMinusSrcAlpha
             ZWrite Off
             Cull Off
@@ -22,14 +26,17 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
             #pragma target 3.5
             #pragma vertex Vertex
             #pragma fragment Fragment
-            #include "UnityCG.cginc"
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "HexGridCore.hlsl"
 
-            float4 _GridColor;
-            float _TileRadius;
-            int _GridRadius;
-            float _LineWidth;
-            float4 _CoordinateScale;
+            CBUFFER_START(UnityPerMaterial)
+                float4 _GridColor;
+                float _TileRadius;
+                int _GridRadius;
+                float _LineWidth;
+                float4 _CoordinateScale;
+            CBUFFER_END
 
             struct Attributes { float4 positionOS : POSITION; float2 uv : TEXCOORD0; };
             struct Varyings { float4 positionCS : SV_POSITION; float2 coordinate : TEXCOORD0; };
@@ -37,7 +44,7 @@ Shader "Jeomseon/Grid/Hex Grid Surface"
             Varyings Vertex(Attributes input)
             {
                 Varyings output;
-                output.positionCS = UnityObjectToClipPos(input.positionOS);
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
                 output.coordinate = (input.uv - 0.5) * _CoordinateScale.xy;
                 return output;
             }

@@ -1,6 +1,18 @@
 # Jeomseon Unity Shaders
 
-Reusable UI, hexagon shape, and hex-grid shaders.
+URP world shaders for hexagon shapes / grids, plus a uGUI-only compatibility UI shader.
+
+## Requirements / render pipeline
+
+- Unity `6000.6.0f1` or newer.
+- The grid shaders (`Hex Grid Surface`, `Hexagon Outline`) are **URP `17.6` only** (since the 6000.6
+  migration, via the `com.unity.render-pipelines.universal` dependency). They do not compile under the
+  Built-in Render Pipeline.
+- `UI/RoundedEdgeWithFade_Masked` (`GradientMaskShader.shader`) is a **uGUI (Canvas) compatibility
+  asset**. It is pipeline-independent (works under Built-in and URP) but **frozen**: bug fixes only,
+  no new features. Unity 6000.6 UI Toolkit does not support per-element custom shaders, so new UI
+  visuals (rounded panels, fades, masking) are built the UI Toolkit way (USS + `Painter2D`) in the
+  `Jeomseon.Unity.UI` package. See harness `architecture/ui-toolkit-shader-migration.md`.
 
 ## Hex shader layers
 

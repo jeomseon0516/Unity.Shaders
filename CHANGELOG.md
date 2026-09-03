@@ -1,5 +1,27 @@
 # 변경 기록
 
+## [Unreleased]
+
+- **(Breaking, 렌더 파이프라인)** 워크스페이스 기준을 Unity `6000.6` + URP `17.6`으로 전환하면서
+  `Jeomseon/Grid/Hex Grid Surface`와 `Jeomseon/Shape/Hexagon Outline` 셰이더를 URP 전용으로
+  이전했습니다.
+  - `#include "UnityCG.cginc"` → `Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl`
+  - `UnityObjectToClipPos` → `TransformObjectToHClip`
+  - SubShader에 `"RenderPipeline"="UniversalPipeline"`, Pass에 `"LightMode"="UniversalForward"` 태그
+  - 머티리얼 프로퍼티를 `CBUFFER_START(UnityPerMaterial)` 블록으로 묶어 SRP Batcher와 호환
+  - 순수 수학 계층인 `HexGridCore.hlsl`/`HexagonShapeCore.hlsl`은 Unity include가 없어 변경 없음
+- `com.unity.render-pipelines.universal` `17.6.0` 의존성을 추가하고 `com.unity.ugui` 최소 버전을
+  `2.6.0`으로 올렸습니다.
+- Built-in Render Pipeline에서는 위 두 grid 셰이더가 더 이상 컴파일되지 않습니다. uGUI Canvas
+  셰이더 `UI/RoundedEdgeWithFade_Masked`는 파이프라인 비종속이라 그대로 동작합니다.
+- Unity 6000.6.0f1 batchmode에서 통합 TestProject import·컴파일 통과, `RoundedEdgeWithFadeShaderTests`
+  11/11 통과. grid 셰이더 URP Scene 렌더 육안 검증만 잔여.
+- **(방향 전환)** `UI/RoundedEdgeWithFade_Masked`(`GradientMaskShader.shader`)를 **uGUI 전용 호환
+  자산으로 동결**합니다. Unity 6000.6 UI Toolkit는 요소별 커스텀 셰이더를 지원하지 않아 셰이더
+  이식이 불가하며, 앞으로 UI 시각 요소는 UI Toolkit(USS + `Painter2D`) 기준으로 `Jeomseon.Unity.UI`에
+  구현합니다. 이 패키지에는 새 uGUI UI 셰이더를 추가하지 않습니다. 근거: 하네스
+  `architecture/ui-toolkit-shader-migration.md`.
+
 ## [0.1.6] - 2026-08-20
 
 - 단일 육각형 도형을 그리는 `HexagonShapeCore.hlsl`과 `Hexagon Outline` Shader를 추가했습니다.

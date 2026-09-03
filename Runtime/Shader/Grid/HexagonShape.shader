@@ -9,9 +9,13 @@ Shader "Jeomseon/Shape/Hexagon Outline"
 
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        Tags { "RenderPipeline"="UniversalPipeline" "Queue"="Transparent" "RenderType"="Transparent" }
+
         Pass
         {
+            Name "Forward"
+            Tags { "LightMode"="UniversalForward" }
+
             Blend SrcAlpha OneMinusSrcAlpha
             ZWrite Off
             Cull Off
@@ -20,12 +24,15 @@ Shader "Jeomseon/Shape/Hexagon Outline"
             #pragma target 3.5
             #pragma vertex Vertex
             #pragma fragment Fragment
-            #include "UnityCG.cginc"
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "HexagonShapeCore.hlsl"
 
-            float4 _ShapeColor;
-            float _ShapeRadius;
-            float _LineWidth;
+            CBUFFER_START(UnityPerMaterial)
+                float4 _ShapeColor;
+                float _ShapeRadius;
+                float _LineWidth;
+            CBUFFER_END
 
             struct Attributes { float4 positionOS : POSITION; float2 uv : TEXCOORD0; };
             struct Varyings { float4 positionCS : SV_POSITION; float2 position : TEXCOORD0; };
@@ -33,7 +40,7 @@ Shader "Jeomseon/Shape/Hexagon Outline"
             Varyings Vertex(Attributes input)
             {
                 Varyings output;
-                output.positionCS = UnityObjectToClipPos(input.positionOS);
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
                 output.position = input.uv - 0.5;
                 return output;
             }

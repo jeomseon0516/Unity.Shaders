@@ -1,6 +1,19 @@
 # Jeomseon Unity Shaders
 
-UI와 육각형 도형/Grid에 재사용할 수 있는 Shader 패키지입니다.
+육각형 도형/Grid용 URP world 셰이더와, uGUI 전용 호환 UI 셰이더를 담는 Shader 패키지입니다.
+
+## 요구 사항 / 렌더 파이프라인
+
+- Unity `6000.6.0f1` 이상
+- grid 셰이더(`Hex Grid Surface`, `Hexagon Outline`)는 **URP `17.6` 전용**입니다
+  (6000.6 전환부터, `com.unity.render-pipelines.universal` 의존성). Built-in Render Pipeline에서는
+  컴파일되지 않습니다.
+- `UI/RoundedEdgeWithFade_Masked`(`GradientMaskShader.shader`)는 **uGUI(Canvas) 전용 호환 자산**
+  입니다. 파이프라인 비종속이라 Built-in·URP 모두에서 동작하지만 **동결 상태**로, 결함 수정만
+  받고 신규 기능은 추가하지 않습니다. Unity 6000.6 UI Toolkit는 요소별 커스텀 셰이더를 지원하지
+  않으므로, 앞으로 둥근 패널·페이드·마스킹 같은 UI 시각 요소는 UI Toolkit(USS + `Painter2D`)
+  기준으로 `Jeomseon.Unity.UI` 패키지에 구현합니다. 근거는 하네스
+  `architecture/ui-toolkit-shader-migration.md` 참고.
 
 ## 육각형 Shader 계층
 

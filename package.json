@@ -2,11 +2,12 @@
   "name": "com.jeomseon.unity.shaders",
   "version": "0.1.6",
   "displayName": "Jeomseon Unity Shaders",
-  "description": "Reusable UI and grid shader assets for Unity projects.",
-  "unity": "6000.5",
-  "unityRelease": "7f1",
+  "description": "Reusable uGUI and URP grid shader assets for Unity 6000.6 projects.",
+  "unity": "6000.6",
+  "unityRelease": "0f1",
   "dependencies": {
-    "com.unity.ugui": "1.0.0"
+    "com.unity.ugui": "2.6.0",
+    "com.unity.render-pipelines.universal": "17.6.0"
   },
   "author": {
     "name": "jeomseon0516",
