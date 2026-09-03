@@ -25,12 +25,33 @@
 Grid 경계는 픽셀이 아니라 타일 중심으로 판정합니다. 가장 바깥 타일은 중심이 Grid 안에 있으면
 `HexagonShapeCore`가 계산한 외곽선 전체와 안티앨리어싱 폭까지 표시합니다.
 
-## 설치
+## OpenUPM으로 설치
 
-OpenUPM 등록 전에는 Package Manager의 **Add package from git URL**에서 다음 주소를 사용합니다.
+프로젝트의 `Packages/manifest.json`에 OpenUPM scoped registry를 한 번 등록합니다.
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.jeomseon"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.jeomseon.unity.shaders": "0.2.0"
+  }
+}
+```
+
+## Git URL로 설치
+
+Unity Package Manager의 `Install package from git URL`에 다음 주소를 사용합니다.
 
 ```text
-https://github.com/jeomseon0516/Unity.Shaders.git#v0.1.6
+https://github.com/jeomseon0516/Unity.Shaders.git#v0.2.0
 ```
 
 ## 리팩토링 방침
