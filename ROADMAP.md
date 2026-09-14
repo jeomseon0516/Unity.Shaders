@@ -17,10 +17,9 @@
 
 Unity 6000.6 UI Toolkit는 요소별 커스텀 Shader/Material 지정을 지원하지 않으므로(‘셰이더 이식’
 자체가 불가), 둥근 패널·페이드·마스킹은 셰이더가 아니라 USS + `Painter2D`(벡터 API, `FillGradient`
-linear/radial) + `generateVisualContent`로 재구현합니다. 상세 근거·API 표면·1:1로 옮겨지지 않는
-항목은 하네스 `architecture/ui-toolkit-shader-migration.md` 참고.
+linear/radial) + `generateVisualContent`로 재구현합니다.
 
-앞으로 UI 시각 요소는 UI Toolkit 기준으로 **`Jeomseon.Unity.UI`** 패키지(`ADR-0008`)에 `VisualElement`
+앞으로 UI 시각 요소는 UI Toolkit 기준으로 **`Jeomseon.Unity.UI`** 패키지에 `VisualElement`
 컴포넌트로 구현합니다. 이 패키지(`Jeomseon.Unity.Shaders`)에는 새 uGUI UI 셰이더를 추가하지 않으며,
 활성 범위는 URP world/grid 셰이더와 향후 world-space HLSL입니다.
 
@@ -48,8 +47,7 @@ linear/radial) + `generateVisualContent`로 재구현합니다. 상세 근거·A
 3. **P2-01 — UI Gradient Mask 대체 가능성** (2026-09-02 재검토 → uGUI 전용 동결로 종결)
    - Unity 6000.6 UI Toolkit는 요소별 커스텀 Shader/Material을 지원하지 않아 셰이더 이식 자체가
      불가합니다. UI Toolkit 대응은 USS + `Painter2D`(`FillGradient` linear/radial) 재구현이며
-     `Jeomseon.Unity.UI`(`ADR-0008`) 소속입니다. 상세는
-     하네스 `architecture/ui-toolkit-shader-migration.md`.
+     `Jeomseon.Unity.UI` 소속입니다.
    - 이 셰이더는 **uGUI 전용 호환 자산으로 동결**합니다(신규 기능 없음, 결함 수정만).
    - (이력) `RectMask2D`와 alpha clip이 동시에 활성화될 variant가 없던 결함을 발견해 두 local
      keyword를 독립 선언했고, Fade mode는 material별 local shader feature로 축소했습니다.

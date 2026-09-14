@@ -23,8 +23,7 @@
 - **(방향 전환)** `UI/RoundedEdgeWithFade_Masked`(`GradientMaskShader.shader`)를 **uGUI 전용 호환
   자산으로 동결**합니다. Unity 6000.6 UI Toolkit는 요소별 커스텀 셰이더를 지원하지 않아 셰이더
   이식이 불가하며, 앞으로 UI 시각 요소는 UI Toolkit(USS + `Painter2D`) 기준으로 `Jeomseon.Unity.UI`에
-  구현합니다. 이 패키지에는 새 uGUI UI 셰이더를 추가하지 않습니다. 근거: 하네스
-  `architecture/ui-toolkit-shader-migration.md`.
+  구현합니다. 이 패키지에는 새 uGUI UI 셰이더를 추가하지 않습니다.
 
 ## [0.1.6] - 2026-08-20
 

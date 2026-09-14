@@ -12,8 +12,7 @@
   입니다. 파이프라인 비종속이라 Built-in·URP 모두에서 동작하지만 **동결 상태**로, 결함 수정만
   받고 신규 기능은 추가하지 않습니다. Unity 6000.6 UI Toolkit는 요소별 커스텀 셰이더를 지원하지
   않으므로, 앞으로 둥근 패널·페이드·마스킹 같은 UI 시각 요소는 UI Toolkit(USS + `Painter2D`)
-  기준으로 `Jeomseon.Unity.UI` 패키지에 구현합니다. 근거는 하네스
-  `architecture/ui-toolkit-shader-migration.md` 참고.
+  기준으로 `Jeomseon.Unity.UI` 패키지에 구현합니다.
 
 ## 육각형 Shader 계층
 

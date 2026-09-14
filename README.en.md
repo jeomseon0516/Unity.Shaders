@@ -41,7 +41,7 @@ https://github.com/jeomseon0516/Unity.Shaders.git#v0.2.0
   asset**. It is pipeline-independent (works under Built-in and URP) but **frozen**: bug fixes only,
   no new features. Unity 6000.6 UI Toolkit does not support per-element custom shaders, so new UI
   visuals (rounded panels, fades, masking) are built the UI Toolkit way (USS + `Painter2D`) in the
-  `Jeomseon.Unity.UI` package. See harness `architecture/ui-toolkit-shader-migration.md`.
+  `Jeomseon.Unity.UI` package.
 
 ## Hex shader layers
 
