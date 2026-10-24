@@ -1,10 +1,27 @@
 # Jeomseon Unity Shaders
 
-URP world shaders for hexagon shapes / grids, plus a uGUI-only compatibility UI shader.
+[한국어](README.md) | English
 
-## Install via OpenUPM
+Provides URP Shader/HLSL layers for a single Hex and Hex Grids, plus a legacy uGUI compatibility shader.
 
-Register the OpenUPM scoped registry once in your project's `Packages/manifest.json`.
+## Quick start
+
+Create a Material using HexagonShape or HexGridSurface, assign it to a renderer, and tune properties/outlines. Use the uGUI shader on Canvas Graphics.
+
+## Contracts and limitations
+
+Grid shaders target URP 17.6 without a Built-in fallback. The uGUI shader is not a UI Toolkit element shader. Tile boundary inclusion is center-based rather than pixel-based.
+
+## Requirements
+
+- Unity `6000.6.0f1`
+- Package: `com.jeomseon.unity.shaders` `0.2.0`
+- `com.unity.ugui`: `2.6.0`
+- `com.unity.render-pipelines.universal`: `17.6.0`
+
+## Installation
+
+Merge this into your project's `Packages/manifest.json`; preserve existing dependencies and registries.
 
 ```json
 {
@@ -23,27 +40,15 @@ Register the OpenUPM scoped registry once in your project's `Packages/manifest.j
 }
 ```
 
-## Install via Git URL
-
-Enter the following URL in Unity Package Manager's `Install package from git URL`.
+Or use **Install package from git URL** in Package Manager:
 
 ```text
 https://github.com/jeomseon0516/Unity.Shaders.git#v0.2.0
 ```
 
-## Requirements / render pipeline
+## API usage and details
 
-- Unity `6000.6.0f1` or newer.
-- The grid shaders (`Hex Grid Surface`, `Hexagon Outline`) are **URP `17.6` only** (since the 6000.6
-  migration, via the `com.unity.render-pipelines.universal` dependency). They do not compile under the
-  Built-in Render Pipeline.
-- `UI/RoundedEdgeWithFade_Masked` (`GradientMaskShader.shader`) is a **uGUI (Canvas) compatibility
-  asset**. It is pipeline-independent (works under Built-in and URP) but **frozen**: bug fixes only,
-  no new features. Unity 6000.6 UI Toolkit does not support per-element custom shaders, so new UI
-  visuals (rounded panels, fades, masking) are built the UI Toolkit way (USS + `Painter2D`) in the
-  `Jeomseon.Unity.UI` package.
-
-## Hex shader layers
+### Hex shader layers
 
 - `HexagonShapeCore.hlsl` owns only the centered single-hex outline distance and antialiasing.
 - `HexagonShape.shader` renders one standalone hexagon.
@@ -54,3 +59,25 @@ https://github.com/jeomseon0516/Unity.Shaders.git#v0.2.0
 Grid membership is based on a tile center instead of the current pixel. When an outer tile center is
 inside the grid, its complete `HexagonShapeCore` outline, including the antialiasing width, remains
 visible.
+
+## Samples
+
+Import the desired entry from **Package Manager > Samples**. Use the included Scene/Editor tool and complete its Setup step first, if required.
+
+- [Basic Usage](Samples~/BasicUsage/README.md)
+  - [ShadersBasicUsageSample](Samples~/BasicUsage/ShadersBasicUsageSample.unity)
+
+## Tests
+
+[Test sources](Tests)
+
+Add the package ID to manifest `testables`, then execute its relevant EditMode/PlayMode assemblies in Unity Test Runner.
+
+## Further reading
+
+[Complete source map and package metadata](Documentation~/Overview.en.md)
+- [Changelog](CHANGELOG.md)
+
+## License
+
+[License](LICENSE.md)
